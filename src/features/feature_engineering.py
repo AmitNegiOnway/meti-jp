@@ -17,8 +17,8 @@ test_data['Smoke']=test_data['Smoke'].map({'no':0,'yes':1})
 test_data['Caesarean']=test_data['Caesarean'].map({'no':0,'yes':1})
 test_data['Gender']=test_data['Gender'].map({'male':1,'female':0})
 
-X_train=train_data.iloc[:,1:]
-X_test=test_data.iloc[:,1:]
+X_train=train_data.iloc[:,2:]
+X_test=test_data.iloc[:,2:]
 
 
 y_train=train_data.iloc[:,0]
