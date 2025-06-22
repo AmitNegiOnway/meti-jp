@@ -1,0 +1,9 @@
+data_preprocessing:
+   test_size: 03
+
+model_building:
+    colsample_bytree: 0.8
+    learning_rate: 0.05
+    max_depth: 3
+    n_estimators: 100
+    subsample: 0.8   
