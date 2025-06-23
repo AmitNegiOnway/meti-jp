@@ -84,3 +84,14 @@ stages:
       hash: md5
       md5: de68dafcddd6d74bfd88d7d4aeac50e9
       size: 98
+  main:
+    cmd: python src/fastapi_app/main.py
+    deps:
+    - path: models/model.pkl
+      hash: md5
+      md5: 7409555d6528301fe32f5287d4ef2b54
+      size: 118587
+    - path: src/fastapi_app/main.py
+      hash: md5
+      md5: 501d902ba6d13cfa9918e1abe95ebdd8
+      size: 1816

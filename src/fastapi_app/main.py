@@ -6,6 +6,7 @@ from fastapi.responses import JSONResponse
 import pickle
 import pandas as pd
 from fastapi.responses import JSONResponse
+from sklearn.preprocessing import StandardScaler
 
 with open('models/model.pkl', 'rb') as f:
           model=pickle.load(f)
@@ -30,13 +31,20 @@ def predict_lungcap(data:Patient):
        input_df=pd.DataFrame([{
                'Age':data.Age,
                 'Height':data.Height,
-                'Smoke':data.Smoke,
-                'Gender':data.Gender,
-                'Caesarean':data.Caesarean
+                'Smoke':1 if data.Smoke =='yes' else 0,
+                'Gender':1 if data.Gender == 'male' else 0,
+                'Caesarean':1 if data.Caesarean =='yes' else 0
         }])
        
-       prediction=model.predict(input_df)[0]
-       return JSONResponse(status_code=200,content={"prediction category":prediction})
+       scaler=StandardScaler()
+       input_scaled=scaler.fit_transform(input_df)
+       
+       prediction=model.predict(input_scaled)[0]
+       try:
+        prediction = model.predict(input_scaled)[0]
+        return JSONResponse(status_code=200, content={"prediction category": prediction})
+       except Exception as e:
+            return JSONResponse(status_code=500, content={"error": str(e)})
 
 
 

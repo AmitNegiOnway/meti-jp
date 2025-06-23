@@ -25,7 +25,7 @@ stages:
     - model_building.learning_rate
     - model_building.max_depth
     - model_building.n_estimators
-    - model_building.subsample 
+    - model_building.subsample
     outs:
     - models/model.pkl
   model_evaluation:
@@ -36,3 +36,10 @@ stages:
     - src/model/model_evaluation.py
     metrics:
     - metrics.json
+
+  main:
+    cmd: python src/fastapi_app/main.py 
+    deps:
+    - models/model.pkl
+    - src/fastapi_app/main.py
+ 
