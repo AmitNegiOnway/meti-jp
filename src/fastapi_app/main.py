@@ -36,13 +36,13 @@ def predict_lungcap(data:Patient):
                 'Caesarean':1 if data.Caesarean =='yes' else 0
         }])
        
-       scaler=StandardScaler()
-       input_scaled=scaler.fit_transform(input_df)
+       #scaler=StandardScaler()
+       #input_scaled=scaler.fit_transform(input_df)
        
-       prediction=model.predict(input_scaled)[0]
+       prediction=model.predict(input_df)[0]
        try:
-        prediction = model.predict(input_scaled)[0]
-        return JSONResponse(status_code=200, content={"prediction category": prediction})
+        prediction = model.predict(input_df)[0]
+        return JSONResponse(status_code=200, content={"Lung Cap Prediction": float(prediction)})
        except Exception as e:
             return JSONResponse(status_code=500, content={"error": str(e)})
 

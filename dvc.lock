@@ -93,5 +93,5 @@ stages:
       size: 119679
     - path: src/fastapi_app/main.py
       hash: md5
-      md5: 501d902ba6d13cfa9918e1abe95ebdd8
-      size: 1816
+      md5: beb67c42997ec07a2f0dc10603d2a6a4
+      size: 1817
