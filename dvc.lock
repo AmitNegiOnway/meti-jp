@@ -31,21 +31,21 @@ stages:
       nfiles: 2
     - path: src/features/feature_engineering.py
       hash: md5
-      md5: a5400c85cf3fdca68c07277ea8553258
+      md5: 899ed8d7324fccf147cff11717fa5188
       size: 1353
     outs:
     - path: data/interim
       hash: md5
-      md5: db0064aaf552c39699b13dcf51aec7f0.dir
-      size: 62727
+      md5: 33adc0e9eb16a6ae109f828c317867bc.dir
+      size: 77000
       nfiles: 4
   model_building:
     cmd: python src/model/model_building.py
     deps:
     - path: data/interim
       hash: md5
-      md5: db0064aaf552c39699b13dcf51aec7f0.dir
-      size: 62727
+      md5: 33adc0e9eb16a6ae109f828c317867bc.dir
+      size: 77000
       nfiles: 4
     - path: src/model/model_building.py
       hash: md5
@@ -61,20 +61,20 @@ stages:
     outs:
     - path: models/model.pkl
       hash: md5
-      md5: 7409555d6528301fe32f5287d4ef2b54
-      size: 118587
+      md5: d6873d85e4cfea06f646ace98ed2f05b
+      size: 119679
   model_evaluation:
     cmd: python src/model/model_evaluation.py
     deps:
     - path: data/interim
       hash: md5
-      md5: db0064aaf552c39699b13dcf51aec7f0.dir
-      size: 62727
+      md5: 33adc0e9eb16a6ae109f828c317867bc.dir
+      size: 77000
       nfiles: 4
     - path: models/model.pkl
       hash: md5
-      md5: 7409555d6528301fe32f5287d4ef2b54
-      size: 118587
+      md5: d6873d85e4cfea06f646ace98ed2f05b
+      size: 119679
     - path: src/model/model_evaluation.py
       hash: md5
       md5: fa8df18f7f34d9a59bbc2ca2295966d2
@@ -82,15 +82,15 @@ stages:
     outs:
     - path: metrics.json
       hash: md5
-      md5: de68dafcddd6d74bfd88d7d4aeac50e9
-      size: 98
+      md5: aa53fc16e7d1861031ce26ebec82ad8e
+      size: 96
   main:
     cmd: python src/fastapi_app/main.py
     deps:
     - path: models/model.pkl
       hash: md5
-      md5: 7409555d6528301fe32f5287d4ef2b54
-      size: 118587
+      md5: d6873d85e4cfea06f646ace98ed2f05b
+      size: 119679
     - path: src/fastapi_app/main.py
       hash: md5
       md5: 501d902ba6d13cfa9918e1abe95ebdd8
